@@ -1,7 +1,7 @@
 package wiremock.transformation.learning;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.matching.UrlPathPattern;
+
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
@@ -10,13 +10,13 @@ public class stubbing {
     private WireMockServer wiremockserver;
 
     public void loadStubs(WireMockServer wireMockServer){
+
        wiremockserver = wireMockServer;
 
         wiremockserver.stubFor(get(urlEqualTo("/api/get-magic"))
                 .willReturn(aResponse()
                         .withHeader("Content-Type", "application/json")
                         .withBody("{\"currently\":{\"windSpeed\":12.34}}")));
-
 
         wiremockserver.stubFor(get(urlPathMatching("/response-transform-with-params"))
                 .withQueryParam("emp_no",matching( "..*" ))
@@ -31,7 +31,5 @@ public class stubbing {
                         .withHeader("Content-Type", "application/json")
                         .withBody("{\"response\":Some content}")));
    }
-
-
 
 }

@@ -17,15 +17,12 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.Map;
 
-
-
 public class DB_Result {
 
     private static String csvPath = "./src/test/resources/csv";
-    private static int rows = 1;
+    //private static int rows = 0;
     public static String xmlbody;
     private Object[] paraKey;
-
 
     public String executequery(Map<String, ListOrSingle<String>> queryParm) throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -46,10 +43,11 @@ public class DB_Result {
             querycondition.append("'");
         }
 
-        String BaseQuery = "select * from emp_address "+querycondition.toString();
+        String BaseQuery = "select * from emp_contact "+querycondition.toString();
         ResultSet rs = con.createStatement().executeQuery(BaseQuery);
         ResultSetMetaData rsmd = rs.getMetaData();
         int colCount = rsmd.getColumnCount();
+        int rows = 1;
         while (rs.next()) {
             Element row = doc.createElement("AddressLine"+rows);
             results.appendChild(row);
