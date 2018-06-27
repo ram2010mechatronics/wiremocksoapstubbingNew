@@ -43,7 +43,7 @@ public class DB_Result {
             querycondition.append("'");
         }
 
-        String BaseQuery = "select * from emp_contact "+querycondition.toString();
+        String BaseQuery = "select * from emp_address "+querycondition.toString();
         ResultSet rs = con.createStatement().executeQuery(BaseQuery);
         ResultSetMetaData rsmd = rs.getMetaData();
         int colCount = rsmd.getColumnCount();
