@@ -63,9 +63,12 @@ public class ListToCSV {
         /** If writeToFile flag was passed as true, output to File**/
         if(writeToFile) {
             try {
-                FileWriter fstream = new FileWriter(destinationCSVFile, true);
+                FileWriter fstream = new FileWriter(destinationCSVFile, false);
                 BufferedWriter out = new BufferedWriter(fstream);
-                out.write(commaSeparatedValues);
+                for(int i=1;i<5;i++) {
+                    out.write( commaSeparatedValues );
+                    out.newLine();
+                }
                 out.close();
                 System.out.println("*** Also wrote this information to file: " + destinationCSVFile);
             } catch (Exception e) {
